@@ -37,11 +37,11 @@ frontend clinton_web_frontend
     bind *:80
     mode http
     http-request set-header X-Forwarded-Proto http
-    default_backend faith_web_backend
+    default_backend clinton_web_backend
 
 
 frontend clinton_web_frontend-https
-    bind *:443 ssl crt /etc/haproxy/certs/www.obony.tech.pem
+    bind *:443 ssl crt /etc/haproxy/certs/www.clinto-aloo.tech.pem
     http-request set-header X-Forwarded-Proto https
     default_backend clinton_web_backend
 
