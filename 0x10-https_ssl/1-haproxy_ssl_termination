@@ -32,21 +32,20 @@ defaults
         errorfile 502 /etc/haproxy/errors/502.http
         errorfile 503 /etc/haproxy/errors/503.http
         errorfile 504 /etc/haproxy/errors/504.http
-
-frontend clinton_web_frontend
+frontend web_frontend
     bind *:80
     mode http
     http-request set-header X-Forwarded-Proto http
-    default_backend clinton_web_backend
+    default_backend web_backend
 
 
-frontend clinton_web_frontend-https
+frontend web_frontend-https
     bind *:443 ssl crt /etc/haproxy/certs/www.clinto-aloo.tech.pem
     http-request set-header X-Forwarded-Proto https
-    default_backend clinton_web_backend
+    default_backend web_backend
 
 
-backend clinton_web_backend
+backend web_backend
     balance roundrobin
     server 27787-web-01 35.175.129.229:80 check
     server 27787-web-02 54.175.166.75:80 check
